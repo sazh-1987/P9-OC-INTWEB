@@ -19,7 +19,9 @@ export const api = {
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const last = data?.events?.length > 0 ? data.events[data.events.length - 1] : null;
+  const last = data?.events?.length > 0
+    ? [...data.events].sort((a, b) => new Date(b.date) - new Date(a.date))[0]
+    : null;
   const getData = useCallback(async () => {
     try {
       setData(await api.loadData());

@@ -7,7 +7,7 @@ import "./style.scss";
 const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
-  // ----------------------------------- clone et trie du plus récent au plus ancien
+  // ----------------------------------- copie et trie du plus récent au plus ancien
   const byDateDesc = [...(data?.focus || [])].sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   )
